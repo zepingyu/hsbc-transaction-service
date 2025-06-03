@@ -343,7 +343,7 @@ Content-Type: application/json
 - 并发50,100；预热1min；运行5min
 ![apifox_search_sync50.png](image%2Fapifox_search_sync50.png)
 ![apifox_search_sync_100.png](image%2Fapifox_search_sync_100.png)
-![img.png](docker_search_cpu.png)
+![img.png](image/docker_search_cpu.png)
 
 2.交易变更场景：模拟用户操作，新增交易、编辑交易、删除交易
 - 并发50,100；预热1min；运行5min
