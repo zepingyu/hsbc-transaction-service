@@ -89,7 +89,7 @@ git clone https://github.com/zepingyu/hsbc-transaction-service.git
 cd hsbc-transaction-service
 
 # 构建项目
-mvn clean package
+mvn clean package -DskipTests
 
 # 启动应用
 java -jar target/hsbc-transaction-service.jar
