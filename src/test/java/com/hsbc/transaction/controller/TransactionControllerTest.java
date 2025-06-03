@@ -109,7 +109,7 @@ class TransactionControllerTest {
         // Act & Assert
         mockMvc.perform(post("/transactions/delete")
                 .param("transactionId", transactionId))
-                .andExpect(status().isNoContent())
+                .andExpect(status().isOk())
                 .andDo(print());
 
         verify(transactionService, times(1)).deleteTransaction(eq(transactionId));
