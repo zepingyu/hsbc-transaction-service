@@ -13,7 +13,9 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.test.web.servlet.ResultActions;
 
+import java.math.BigDecimal;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
@@ -47,6 +49,9 @@ class TransactionControllerTest {
         // Arrange
         TransactionInfo info = new TransactionInfo();
         info.setDescription("create info");
+        info.setType("withdraw");
+        info.setAmount(new BigDecimal(100.1));
+        info.setAccountId("HSBC202606");
 
         TransactionRequest request = new TransactionRequest();
         request.setTransactionInfo(info);
@@ -76,6 +81,9 @@ class TransactionControllerTest {
         TransactionInfo info = new TransactionInfo();
         info.setTransactionId("T2025060001");
         info.setDescription("updated info");
+        info.setType("withdraw");
+        info.setAmount(new BigDecimal(100.1));
+        info.setAccountId("HSBC202606");
 
         TransactionRequest request = new TransactionRequest();
         request.setTransactionInfo(info);
