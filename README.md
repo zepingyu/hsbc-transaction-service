@@ -1,9 +1,10 @@
 # hsbc-transaction-service
 
 ## 项目简介
+
 本项目是一个基于Spring Boot构建的交易服务系统，提供交易记录的创建、修改、删除、分页查询等功能。采用Restful API设计原则，提供标准API接口，使用SpringDoc和Swagger进行接口文档的管理。系统采用标准的分层架构设计，包含 Controller、Service、DAO 层，并通过 VO、DTO 等对象实现数据封装与传输。
-为了保证服务的高可用和稳定性，对系统进行了以下完善和扩展，支持缓存管理、统一异常处理、日志输出等功能，同时进行了单元测试和压力测试，确保代码的质量和健壮性。
----
+为了保证服务的高可用和稳定性，对系统进行了以下完善和扩展，支持缓存管理、统一异常处理、请求参数校验、日志输出等功能，同时进行了单元测试和压力测试，确保代码的质量和健壮性。
+
 
 ## 项目展示
 
@@ -26,7 +27,7 @@
 - **Swagger / SpringDoc**：API 文档生成
 - **Maven(3.9.9) + Docker**：构建与部署
 
----
+
 
 ## 项目结构说明
 
@@ -259,7 +260,7 @@ Content-Type: application/json
 
 
 
-## 响应结构说明
+### 响应结构说明
 
 所有接口返回统一的 JSON 格式：
 
@@ -279,9 +280,9 @@ Content-Type: application/json
 
 ---
 
-## 示例请求与响应
+### 示例请求与响应
 
-### 创建交易 - 请求
+#### 创建交易 - 请求
 ```bash
 POST /transaction/create HTTP/1.1
 Content-Type: application/json
@@ -297,7 +298,7 @@ Content-Type: application/json
 ```
 
 
-### 创建交易 - 响应
+#### 创建交易 - 响应
 ```json
 {
   "code": 200,
@@ -315,7 +316,6 @@ Content-Type: application/json
 ```
 
 
----
 
 ## 测试说明
 ### 单元测试
@@ -333,22 +333,24 @@ Content-Type: application/json
 ![img_2.png](image/junit_service_api.png)
 ![img_1.png](image/junit_service.png)
 
-### 压力测试
+## 压力测试
 -  压测工具：Apifox
 -  压测场景： 交易查询、交易变更（新增、编辑、删除功能）
 -  参数：并发50,100；预热1min；运行5min
 
 #### 压测报告
 1.交易查询场景：单条以及分页查询交易数据
+- 并发50,100；预热1min；运行5min
 ![apifox_search_sync50.png](image%2Fapifox_search_sync50.png)
 ![apifox_search_sync_100.png](image%2Fapifox_search_sync_100.png)
+![img.png](docker_search_cpu.png)
 
-2.交易变更场景：新增、编辑、删除功能
-  - 交易变更（并发50,100；预热1min；运行5min）：新增、编辑、删除功能
+2.交易变更场景：模拟用户操作，新增交易、编辑交易、删除交易
+- 并发50,100；预热1min；运行5min
+![img.png](image/apifox_update_sync50.png)
+![img.png](image/apifox_update_sync100.png)
+![img.png](image/docker_update_cpu.png)
 
-
-
----
 
 ## 后续工作 & 待优化点
 
@@ -357,4 +359,4 @@ Content-Type: application/json
 3. 高并发性能：可以借助Redis进行三级缓存，提升性能；使用Redis分布式锁，解决资源竞争问题；采用异步消息、限流等方式减轻服务压力。
 4. 安全认证鉴权：把控接口、数据权限；增加oauth、sso或者token等验证机制。 
 5. 完善异常处理机制：针对不同业务场景自定义异常类，统一处理异常。
----
+

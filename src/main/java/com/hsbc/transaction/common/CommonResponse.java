@@ -30,4 +30,9 @@ public class CommonResponse<T> {
     public static <T> CommonResponse<T> error(int code, String msg) {
         return new CommonResponse<>(code, msg, null);
     }
+
+    public static <T> CommonResponse<T> error(int code, String msg, T data) {
+        return new CommonResponse<>(code, msg, data);
+
+    }
 }
